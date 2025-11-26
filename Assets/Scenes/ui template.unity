@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 1490904230}
   - component: {fileID: 1490904231}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: anxietyslider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

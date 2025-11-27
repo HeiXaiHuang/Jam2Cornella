@@ -1,20 +1,46 @@
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class ChatController : MonoBehaviour
 {
-    public Text textoMensaje;
+    public TMP_Text textoMensaje;      // Texto donde se muestra el mensaje
+    public Button[] botonesOpciones;   // Los 3 botones de respuesta
 
-    public void MostrarMensaje(int mensajeID)
+    private Action<int> callbackRespuesta;
+
+    // ---------------------------
+    // Mostrar mensaje y botones
+    // ---------------------------
+    public void MostrarMensajeNovia(string mensaje, bool mostrarOpciones, Action<int> callback = null)
     {
-        if (mensajeID == 0)
-            textoMensaje.text = "Porque no me constestas?";
-        else if (mensajeID == 1)
-            textoMensaje.text = "¿Te has enfadado?";
-        else if (mensajeID == 2)
-            textoMensaje.text = "Wayuebdyewbfh";
-        else
-            textoMensaje.text = "";
+        textoMensaje.text = mensaje;
+        callbackRespuesta = callback;
+
+        // Activar o desactivar botones
+        foreach (var btn in botonesOpciones)
+            btn.gameObject.SetActive(mostrarOpciones);
+
+        if (mostrarOpciones)
+        {
+            // Asignar callback a cada botón
+            for (int i = 0; i < botonesOpciones.Length; i++)
+            {
+                int index = i; // Capturar variable local
+                botonesOpciones[i].onClick.RemoveAllListeners();
+                botonesOpciones[i].onClick.AddListener(() => Responder(index));
+            }
+        }
+    }
+
+    void Responder(int opcion)
+    {
+        // Ocultar botones al responder
+        foreach (var btn in botonesOpciones)
+            btn.gameObject.SetActive(false);
+
+        // Llamar callback
+        callbackRespuesta?.Invoke(opcion);
     }
 }
-

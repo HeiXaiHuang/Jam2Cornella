@@ -7,6 +7,9 @@ public class SliderLoop : MonoBehaviour
     [SerializeField] private Slider slider;
     [Tooltip("Optional parent UI GameObject to show/hide. If set, this will be used instead of toggling the slider GameObject directly.")]
     [SerializeField] private GameObject panel;
+
+    public GameObject eButton;
+
     [SerializeField] private float speed = 40f; // slider units per second
     [SerializeField] private bool playOnStart = true;
 
@@ -68,6 +71,7 @@ public class SliderLoop : MonoBehaviour
             else
             {
                 SetUIVisible(true);
+                eButton.SetActive(false);
             }
         }
         else
@@ -83,6 +87,7 @@ public class SliderLoop : MonoBehaviour
             {
                 if (!slider.gameObject.activeSelf)
                     slider.gameObject.SetActive(true);
+                 
             }
         }
 

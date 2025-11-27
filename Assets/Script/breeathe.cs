@@ -60,7 +60,7 @@ public class AnxietyMinigame : MonoBehaviour
             indicator.anchoredPosition = ap;
         }
 
-        if (!onCooldown && Input.GetKeyDown(KeyCode.Space))
+        if (!onCooldown && Input.GetKeyDown(KeyCode.E))
         {
             TryCheckHit();
         }

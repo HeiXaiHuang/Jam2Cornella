@@ -1,18 +1,14 @@
 using UnityEngine;
+using System.Collections;
 
 public class MessageManager : MonoBehaviour
 {
     [Header("Referencias")]
-    public ChatController chat;             // ChatController con TMP y botones
-    public MovilController movil;           // MovilController que abre/cierra móvil
+    public ChatController chat;
+    public MovilController movil;
+    public anxiety anxietySystem;
 
-public anxiety anxietySystem;
-
-private int conversacionActual = 0;
-private const int TOTAL_CONVERSACIONES = 3;
-
-
-    [Header("Mensajes")]
+    [Header("Mensajes y respuestas")]
     public string[] mensajesNovia = new string[]
     {
         "¿Por qué no me contestas?",
@@ -29,75 +25,76 @@ private const int TOTAL_CONVERSACIONES = 3;
 
     [Header("Estado")]
     public int mensajeActual = 0;
-    public bool notificacionPendiente = false; // Solo abrir móvil si hay mensaje
+    public bool notificacionPendiente = false;
+    private bool notificacionLanzada = false;
+
+    private const float ANXIETY_TRIGGER = 70f;
+    private const int TOTAL_CONVERSACIONES = 3;
+
+    void Start()
+    {
+        StartCoroutine(ForzarNotificacionInicio());
+    }
 
     void Update()
     {
-        // Protecciones
-        if (anxietySystem == null) return;
-        if (mensajeActual >= mensajesNovia.Length) return;
-        
-        // Si la ansiedad supera 80 y no hay notificación pendiente, lanzar mensaje
-        if (!notificacionPendiente && (GetAnxiety() > 80.0f))
+        if (anxietySystem == null || movil == null || chat == null) return;
+        if (mensajeActual >= TOTAL_CONVERSACIONES) return;
+
+        float anxiety = anxietySystem.GetAnxiety();
+
+        if (!notificacionLanzada && anxiety >= ANXIETY_TRIGGER)
         {
-            print("Anxiety: " + GetAnxiety());
             LanzarMensaje();
+            notificacionLanzada = true;
         }
     }
 
-    // Wrapper para leer el valor desde el script 'anxiety'
-    public float GetAnxiety()
+    IEnumerator ForzarNotificacionInicio()
     {
-        if (anxietySystem == null) return 0f;
-        return anxietySystem.GetAnxiety();
+        yield return null;
+        if (mensajeActual < TOTAL_CONVERSACIONES && !notificacionLanzada)
+        {
+            LanzarMensaje();
+            Debug.Log("Notificación forzada al inicio");
+        }
     }
-    
-    // ---------------------------
-    // LLAMAR CUANDO LLEGA UN MENSAJE
-    // ---------------------------
-public void LanzarMensaje()
-{
-    print("Message started: " + GetAnxiety());
-    //if (mensajeActual >= mensajesNovia.Length) return;
 
-    // Mostrar notificación
+    public void LanzarMensaje()
+    {
+        if (notificacionPendiente) return;
 
-    movil.notificacion.Mostrar();
-    print("Cerida a la funció");
-    // Marcar mensaje pendiente
-    notificacionPendiente = true;
-}
+        notificacionPendiente = true;
 
+        if (movil.notificacion != null)
+            movil.notificacion.Mostrar();
 
-    // ---------------------------
-    // LLAMAR DESDE MovilController CUANDO SE ABRE EL MÓVIL
-    // ---------------------------
+        Debug.Log("Notificación activada");
+    }
+
     public void MostrarChat()
     {
-        if (!notificacionPendiente) return; // No abrir si no hay mensaje
+        if (!notificacionPendiente) return;
 
-        // Ya se abrió el chat → reset flag
         notificacionPendiente = false;
 
-        // Mostrar mensaje actual con botones
         chat.MostrarMensajeNovia(
             mensajesNovia[mensajeActual],
             true,
             RespuestaJugador
         );
+
+        if (movil.notificacion != null)
+            movil.notificacion.Ocultar();
     }
 
-    // ---------------------------
-    // CALLBACK CUANDO EL JUGADOR RESPONDE
-    // ---------------------------
     void RespuestaJugador(int opcion)
     {
-        // Obtener respuesta de la novia
         string respuesta = respuestasNovia[mensajeActual, opcion];
-
-        // Mostrar respuesta sin botones
         chat.MostrarMensajeNovia(respuesta, false);
 
         mensajeActual++;
+
+        anxietySystem.AddAnxiety(-40f);
     }
 }

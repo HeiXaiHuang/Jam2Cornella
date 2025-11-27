@@ -544,6 +544,7 @@ GameObject:
   - component: {fileID: 1302101505}
   - component: {fileID: 1302101507}
   - component: {fileID: 1302101506}
+  - component: {fileID: 1302101508}
   m_Layer: 5
   m_Name: brth bckgrnd
   m_TagString: Untagged
@@ -590,7 +591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1985933544, guid: 44dc2cb9060107b4ca4c803f64c10c19, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44dc2cb9060107b4ca4c803f64c10c19, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -608,6 +609,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302101504}
   m_CullTransparentMesh: 1
+--- !u!95 &1302101508
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302101504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: deb24f1f690959d45a5de5eaa410608b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1415575742
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +789,7 @@ GameObject:
   - component: {fileID: 1530150288}
   - component: {fileID: 1530150289}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: breathe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -857,10 +880,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SliderLoop
   slider: {fileID: 1530150288}
-  speed: 40
+  panel: {fileID: 0}
+  speed: 300
   playOnStart: 1
-  hitMin: 40
-  hitMax: 60
+  hitMin: 35
+  hitMax: 65
   activationThreshold: 70
   onHitSuccess:
     m_PersistentCalls:
@@ -870,7 +894,7 @@ MonoBehaviour:
       m_Calls: []
   anxietyScript: {fileID: 1490904232}
   successReduce: 10
-  failIncrease: 5
+  failIncrease: 15
 --- !u!1 &1550689650
 GameObject:
   m_ObjectHideFlags: 0

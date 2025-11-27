@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class SliderLoop : MonoBehaviour
 {
     [SerializeField] private Slider slider;
+    [Tooltip("Optional parent UI GameObject to show/hide. If set, this will be used instead of toggling the slider GameObject directly.")]
+    [SerializeField] private GameObject panel;
     [SerializeField] private float speed = 40f; // slider units per second
     [SerializeField] private bool playOnStart = true;
 
@@ -38,10 +40,10 @@ public class SliderLoop : MonoBehaviour
         {
             slider.minValue = 0f;
             slider.maxValue = 100f;
-            if (playOnStart)
-                enabled = true;
-            else
-                enabled = false;
+            // keep the component enabled so we can watch anxiety and toggle the UI
+            enabled = true;
+            // hide the UI initially; it will be shown when anxiety > activationThreshold
+            SetUIVisible(false);
         }
         else
         {
@@ -52,6 +54,37 @@ public class SliderLoop : MonoBehaviour
     void Update()
     {
         if (slider == null) return;
+
+        // If we have an anxiety script, only run while anxiety is above threshold.
+        if (anxietyScript != null)
+        {
+            float current = anxietyScript.GetAnxiety();
+            if (current <= activationThreshold)
+            {
+                // hide UI and skip updates while below or equal the threshold
+                SetUIVisible(false);
+                return;
+            }
+            else
+            {
+                SetUIVisible(true);
+            }
+        }
+        else
+        {
+            // no anxiety script: fall back to playOnStart behavior
+            if (!playOnStart)
+            {
+                if (slider.gameObject.activeSelf)
+                    slider.gameObject.SetActive(false);
+                return;
+            }
+            else
+            {
+                if (!slider.gameObject.activeSelf)
+                    slider.gameObject.SetActive(true);
+            }
+        }
 
         // Space press handling: check if inside the configured hit range
         if (Input.GetKeyDown(KeyCode.Space))
@@ -111,5 +144,34 @@ public class SliderLoop : MonoBehaviour
         if (slider == null) return;
         slider.value = slider.minValue;
         increasing = true;
+    }
+
+    private void SetUIVisible(bool visible)
+    {
+        if (panel != null)
+        {
+            if (panel.activeSelf != visible)
+                panel.SetActive(visible);
+            return;
+        }
+
+        if (slider == null) return;
+
+        // If this script is on the same GameObject as the slider, deactivating the slider
+        // would also disable this component and stop Update(). In that case, toggle
+        // visual Graphics instead so this component remains active.
+        if (slider.gameObject != this.gameObject)
+        {
+            if (slider.gameObject.activeSelf != visible)
+                slider.gameObject.SetActive(visible);
+            return;
+        }
+
+        // Same GameObject: enable/disable all child Graphic components (Images, Text, etc.)
+        var graphics = slider.GetComponentsInChildren<UnityEngine.UI.Graphic>(true);
+        foreach (var g in graphics)
+        {
+            if (g != null) g.enabled = visible;
+        }
     }
 }

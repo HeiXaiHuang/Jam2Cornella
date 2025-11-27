@@ -6,6 +6,12 @@ public class MessageManager : MonoBehaviour
     public ChatController chat;             // ChatController con TMP y botones
     public MovilController movil;           // MovilController que abre/cierra móvil
 
+public anxiety anxietySystem;
+
+private int conversacionActual = 0;
+private const int TOTAL_CONVERSACIONES = 3;
+
+
     [Header("Mensajes")]
     public string[] mensajesNovia = new string[]
     {
@@ -25,16 +31,39 @@ public class MessageManager : MonoBehaviour
     public int mensajeActual = 0;
     public bool notificacionPendiente = false; // Solo abrir móvil si hay mensaje
 
+    void Update()
+    {
+        // Protecciones
+        if (anxietySystem == null) return;
+        if (mensajeActual >= mensajesNovia.Length) return;
+        
+        // Si la ansiedad supera 80 y no hay notificación pendiente, lanzar mensaje
+        if (!notificacionPendiente && (GetAnxiety() > 80.0f))
+        {
+            print("Anxiety: " + GetAnxiety());
+            LanzarMensaje();
+        }
+    }
+
+    // Wrapper para leer el valor desde el script 'anxiety'
+    public float GetAnxiety()
+    {
+        if (anxietySystem == null) return 0f;
+        return anxietySystem.GetAnxiety();
+    }
+    
     // ---------------------------
     // LLAMAR CUANDO LLEGA UN MENSAJE
     // ---------------------------
 public void LanzarMensaje()
 {
-    if (mensajeActual >= mensajesNovia.Length) return;
+    print("Message started: " + GetAnxiety());
+    //if (mensajeActual >= mensajesNovia.Length) return;
 
     // Mostrar notificación
-    movil.notificacion.Mostrar();
 
+    movil.notificacion.Mostrar();
+    print("Cerida a la funció");
     // Marcar mensaje pendiente
     notificacionPendiente = true;
 }

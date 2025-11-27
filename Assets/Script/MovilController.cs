@@ -8,6 +8,7 @@ public class MovilController : MonoBehaviour
     [Header("Posiciones")]
     public Vector2 posicionAbierta = Vector2.zero;
     public Vector2 posicionCerrada = new Vector2(500, -400);
+    public NotificacionMovil notificacion;
 
     [Header("Escala")]
     public Vector3 escalaAbierta = Vector3.one;
@@ -15,6 +16,10 @@ public class MovilController : MonoBehaviour
 
     [Header("Animación")]
     public float duracion = 0.35f;
+
+    [Header("Pantallas")]
+    public GameObject home;
+    public GameObject chat;
 
     bool abierto = false;
     bool animando = false;
@@ -28,15 +33,24 @@ public class MovilController : MonoBehaviour
     {
         rect.anchoredPosition = posicionCerrada;
         rect.localScale = escalaCerrada;
+
+        MostrarHome();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) && !animando)
-        {
-            StartCoroutine(AnimarMovil());
-        }
+    if (Input.GetKeyDown(KeyCode.M) && !animando)
+    {
+        StartCoroutine(AnimarMovil());
     }
+
+    // TEST: simular mensaje entrante
+    if (Input.GetKeyDown(KeyCode.N))
+    {
+        notificacion.Mostrar();
+    }
+    }
+
 
     IEnumerator AnimarMovil()
     {
@@ -64,7 +78,23 @@ public class MovilController : MonoBehaviour
         rect.anchoredPosition = posFinal;
         rect.localScale = escalaFinal;
 
+        if (!abierto)
+        {
+            notificacion.Ocultar();
+        }
+
+        if (abierto)
+        {
+            MostrarHome();
+        }
+
         abierto = !abierto;
         animando = false;
+    }
+
+    void MostrarHome()
+    {
+        home.SetActive(true);
+        chat.SetActive(false);
     }
 }

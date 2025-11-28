@@ -33,6 +33,7 @@ public class footsteps : MonoBehaviour
             {
                 audioSource = gameObject.AddComponent<AudioSource>();
                 audioSource.playOnAwake = false;
+                audioSource.loop = false;
             }
         }
     }
@@ -61,6 +62,11 @@ public class footsteps : MonoBehaviour
         {
             // reset timer when not moving so steps don't queue
             stepTimer = Mathf.Min(stepTimer, stepInterval);
+            // stop any currently playing footstep sound when we stop moving
+            if (audioSource != null && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
         }
     }
 
@@ -82,7 +88,9 @@ public class footsteps : MonoBehaviour
         if (randomizePitch)
             audioSource.pitch = Random.Range(pitchRange.x, pitchRange.y);
 
-        audioSource.PlayOneShot(clip);
+        // use the audioSource.clip so we can stop playback when movement stops
+        audioSource.clip = clip;
+        audioSource.Play();
 
         // restore pitch so other audio on this source is unaffected
         audioSource.pitch = prevPitch;

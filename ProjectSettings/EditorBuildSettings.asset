@@ -20,6 +20,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Home 1.unity
     guid: a4635f682e97ae943bc82d28587b9658
+  - enabled: 1
+    path: Assets/Scenes/Prologo 3.unity
+    guid: 852a9e1f9764eb44b9afb57a7df5a5de
+  - enabled: 1
+    path: Assets/Scenes/Park.unity
+    guid: f985be4d214f78242bcf9d0edbfc0585
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 979f5a011e36e0642a8a367ea0d441b6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

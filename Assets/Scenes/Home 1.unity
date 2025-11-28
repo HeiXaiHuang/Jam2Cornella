@@ -1438,9 +1438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectCleaned
   objetosAChequear:
-  - {fileID: 244310207}
   - {fileID: 609578895}
-  - {fileID: 2105876676}
   messageManager: {fileID: 1171774895}
 --- !u!4 &305148092
 Transform:

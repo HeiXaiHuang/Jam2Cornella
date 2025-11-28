@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class anxiety : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class anxiety : MonoBehaviour
         UpdateAnxietyAudio();
         if (isFull)
         {
-            //anxiety full game over
+            SceneManager.LoadScene("GameOver");
         }
 
         UpdateAnxietyAudio();

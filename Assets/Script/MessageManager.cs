@@ -12,7 +12,7 @@ public class MessageManager : MonoBehaviour
         "You know what's ansiety? Is just cause I'm suffering that right know: My parents are fighting and its not the first time that happens, you know what I mean? I'm very worried babe, hellllllpppppp meee"
         ,
         "I'm tidying up my bedrrom love<3. Could you do it for me jejejejeje? Cause I'm too lazy and I don't wanna spend hours and hours ",
-        "Eyeyeyyeyeeyeyeye, right now I'm listening 'Me falta el Aliento' from Estopa. I absolutely recommend you to listen it at moments when u feel ver nervous. In my case, it relaxes me a lot babe"
+        "Eyeyeyyeyeeyeyeye, right now I'm listening 'Como Camaron' from Estopa. I absolutely recommend you to listen it at moments when u feel ver nervous. In my case, it relaxes me a lot babe"
     };
 
     string[][] opciones =

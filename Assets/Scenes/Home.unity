@@ -981,6 +981,9 @@ MonoBehaviour:
   onAnxietyFull:
     m_PersistentCalls:
       m_Calls: []
+  anxietyClip: {fileID: 0}
+  anxietyAudioSource: {fileID: 0}
+  anxietySoundThreshold: 70
 --- !u!114 &172274050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,7 +1486,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DetectCleaned
   objetosAChequear:
   - {fileID: 244310207}
-  - {fileID: 609578895}
   - {fileID: 2105876676}
   messageManager: {fileID: 1171774895}
 --- !u!4 &305148092

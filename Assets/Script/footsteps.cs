@@ -22,6 +22,7 @@ public class footsteps : MonoBehaviour
 
     private Vector3 lastPosition;
     private float stepTimer = 0f;
+    private bool wasMoving = false;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class footsteps : MonoBehaviour
             {
                 audioSource = gameObject.AddComponent<AudioSource>();
                 audioSource.playOnAwake = false;
+                audioSource.loop = false;
             }
         }
     }
@@ -49,9 +51,15 @@ public class footsteps : MonoBehaviour
 
         stepTimer += Time.deltaTime;
 
-        if (speed >= minMoveThreshold)
+        bool isMoving = speed >= minMoveThreshold;
+
+        // if we just started moving, reset the timer to avoid immediate step playback
+        if (!wasMoving && isMoving)
+            stepTimer = 0f;
+
+        if (isMoving)
         {
-            if (stepTimer >= stepInterval)
+            if (stepTimer >= stepInterval && (audioSource == null || !audioSource.isPlaying))
             {
                 PlayStep();
                 stepTimer = 0f;
@@ -61,7 +69,15 @@ public class footsteps : MonoBehaviour
         {
             // reset timer when not moving so steps don't queue
             stepTimer = Mathf.Min(stepTimer, stepInterval);
+            // stop any currently playing footstep sound immediately
+            if (audioSource != null && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+                audioSource.clip = null;
+            }
         }
+
+        wasMoving = isMoving;
     }
 
     /// <summary>
@@ -82,7 +98,12 @@ public class footsteps : MonoBehaviour
         if (randomizePitch)
             audioSource.pitch = Random.Range(pitchRange.x, pitchRange.y);
 
-        audioSource.PlayOneShot(clip);
+        // avoid overlapping footsteps: if already playing, skip
+        if (audioSource.isPlaying) return;
+
+        audioSource.clip = clip;
+        audioSource.loop = false;
+        audioSource.Play();
 
         // restore pitch so other audio on this source is unaffected
         audioSource.pitch = prevPitch;

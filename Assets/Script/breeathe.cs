@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnxietyMinigame : MonoBehaviour
+public class breeathe : MonoBehaviour
 {
     [SerializeField] private anxiety anxietyScript;
     [SerializeField] private GameObject panel; // whole UI panel to show/hide

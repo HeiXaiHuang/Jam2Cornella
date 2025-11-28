@@ -42,6 +42,11 @@ public class MessageManager : MonoBehaviour
         Debug.Log("Notificación activada");
     }
 
+    void Start()
+    {
+        ForzarNotificacion();
+    }
+
     public void AbrirChatSiHayNotificacion()
     {
         if (!notificacionPendiente) return;

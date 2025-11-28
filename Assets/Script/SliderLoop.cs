@@ -7,24 +7,9 @@ public class SliderLoop : MonoBehaviour
     [SerializeField] private Slider slider;
     [Tooltip("Optional parent UI GameObject to show/hide. If set, this will be used instead of toggling the slider GameObject directly.")]
     [SerializeField] private GameObject panel;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     public GameObject eButton;
 
-    [Header("Heartbeat Audio")]
-    [Tooltip("Optional AudioSource to play heartbeat sound (loop). If not set and Heartbeat Clip is assigned, an AudioSource will be added at runtime.")]
-    [SerializeField] private AudioSource heartbeatSource;
-    [Tooltip("Optional heartbeat clip used to create an AudioSource if none assigned.")]
-    [SerializeField] private AudioClip heartbeatClip;
-
-=======
->>>>>>> parent of a683d4b (Home casi done)
-=======
->>>>>>> parent of a683d4b (Home casi done)
-=======
->>>>>>> parent of a683d4b (Home casi done)
     [SerializeField] private float speed = 40f; // slider units per second
     [SerializeField] private bool playOnStart = true;
 
@@ -62,22 +47,6 @@ public class SliderLoop : MonoBehaviour
             enabled = true;
             // hide the UI initially; it will be shown when anxiety > activationThreshold
             SetUIVisible(false);
-
-            // Initialize heartbeat audio: if user provided a clip but no AudioSource,
-            // create one on this GameObject. Ensure it won't play on awake and loops.
-            if (heartbeatSource == null && heartbeatClip != null)
-            {
-                heartbeatSource = gameObject.AddComponent<AudioSource>();
-                heartbeatSource.clip = heartbeatClip;
-                heartbeatSource.loop = true;
-                heartbeatSource.playOnAwake = false;
-            }
-
-            if (heartbeatSource != null)
-            {
-                heartbeatSource.loop = true;
-                heartbeatSource.playOnAwake = false;
-            }
         }
         else
         {
@@ -102,6 +71,7 @@ public class SliderLoop : MonoBehaviour
             else
             {
                 SetUIVisible(true);
+                eButton.SetActive(false);
             }
         }
         else
@@ -117,6 +87,7 @@ public class SliderLoop : MonoBehaviour
             {
                 if (!slider.gameObject.activeSelf)
                     slider.gameObject.SetActive(true);
+                 
             }
         }
 
@@ -186,18 +157,6 @@ public class SliderLoop : MonoBehaviour
         {
             if (panel.activeSelf != visible)
                 panel.SetActive(visible);
-            // Start/stop heartbeat when panel visibility changes
-            if (heartbeatSource != null)
-            {
-                if (visible)
-                {
-                    if (!heartbeatSource.isPlaying) heartbeatSource.Play();
-                }
-                else
-                {
-                    if (heartbeatSource.isPlaying) heartbeatSource.Stop();
-                }
-            }
             return;
         }
 
@@ -210,18 +169,6 @@ public class SliderLoop : MonoBehaviour
         {
             if (slider.gameObject.activeSelf != visible)
                 slider.gameObject.SetActive(visible);
-            // Start/stop heartbeat when slider GameObject visibility changes
-            if (heartbeatSource != null)
-            {
-                if (visible)
-                {
-                    if (!heartbeatSource.isPlaying) heartbeatSource.Play();
-                }
-                else
-                {
-                    if (heartbeatSource.isPlaying) heartbeatSource.Stop();
-                }
-            }
             return;
         }
 
@@ -230,19 +177,6 @@ public class SliderLoop : MonoBehaviour
         foreach (var g in graphics)
         {
             if (g != null) g.enabled = visible;
-        }
-
-        // Start/stop heartbeat when toggling graphics on the same GameObject
-        if (heartbeatSource != null)
-        {
-            if (visible)
-            {
-                if (!heartbeatSource.isPlaying) heartbeatSource.Play();
-            }
-            else
-            {
-                if (heartbeatSource.isPlaying) heartbeatSource.Stop();
-            }
         }
     }
 }

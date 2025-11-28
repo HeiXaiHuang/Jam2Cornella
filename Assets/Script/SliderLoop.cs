@@ -53,6 +53,22 @@ public class SliderLoop : MonoBehaviour
             enabled = true;
             // hide the UI initially; it will be shown when anxiety > activationThreshold
             SetUIVisible(false);
+
+            // Initialize heartbeat audio: if user provided a clip but no AudioSource,
+            // create one on this GameObject. Ensure it won't play on awake and loops.
+            if (heartbeatSource == null && heartbeatClip != null)
+            {
+                heartbeatSource = gameObject.AddComponent<AudioSource>();
+                heartbeatSource.clip = heartbeatClip;
+                heartbeatSource.loop = true;
+                heartbeatSource.playOnAwake = false;
+            }
+
+            if (heartbeatSource != null)
+            {
+                heartbeatSource.loop = true;
+                heartbeatSource.playOnAwake = false;
+            }
         }
         else
         {
@@ -163,6 +179,18 @@ public class SliderLoop : MonoBehaviour
         {
             if (panel.activeSelf != visible)
                 panel.SetActive(visible);
+            // Start/stop heartbeat when panel visibility changes
+            if (heartbeatSource != null)
+            {
+                if (visible)
+                {
+                    if (!heartbeatSource.isPlaying) heartbeatSource.Play();
+                }
+                else
+                {
+                    if (heartbeatSource.isPlaying) heartbeatSource.Stop();
+                }
+            }
             return;
         }
 
@@ -175,6 +203,18 @@ public class SliderLoop : MonoBehaviour
         {
             if (slider.gameObject.activeSelf != visible)
                 slider.gameObject.SetActive(visible);
+            // Start/stop heartbeat when slider GameObject visibility changes
+            if (heartbeatSource != null)
+            {
+                if (visible)
+                {
+                    if (!heartbeatSource.isPlaying) heartbeatSource.Play();
+                }
+                else
+                {
+                    if (heartbeatSource.isPlaying) heartbeatSource.Stop();
+                }
+            }
             return;
         }
 
@@ -183,6 +223,19 @@ public class SliderLoop : MonoBehaviour
         foreach (var g in graphics)
         {
             if (g != null) g.enabled = visible;
+        }
+
+        // Start/stop heartbeat when toggling graphics on the same GameObject
+        if (heartbeatSource != null)
+        {
+            if (visible)
+            {
+                if (!heartbeatSource.isPlaying) heartbeatSource.Play();
+            }
+            else
+            {
+                if (heartbeatSource.isPlaying) heartbeatSource.Stop();
+            }
         }
     }
 }

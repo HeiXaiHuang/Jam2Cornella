@@ -838,7 +838,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 2109143529}
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 244310208}
   cleanedSprite: {fileID: 21300000, guid: 87de1843e64ffce47bc222c69d98893c, type: 3}
   isClean: 0
@@ -992,7 +995,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 1134854310}
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 280264527}
   cleanedSprite: {fileID: 21300000, guid: 0f8313a0d13000f498cc5c8d1803b21b, type: 3}
   isClean: 0
@@ -2274,7 +2280,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 915028826}
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 649916865}
   cleanedSprite: {fileID: 21300000, guid: 75687d1c71ece7247a3ef94560d80fde, type: 3}
   isClean: 0
@@ -2618,14 +2627,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliderLoop
   slider: {fileID: 709247184}
   panel: {fileID: 0}
+<<<<<<< HEAD
   eButton: {fileID: 0}
   heartbeatSource: {fileID: 709247185}
   heartbeatClip: {fileID: 8300000, guid: 52af4ec6da1f3cf4b8be631342b237b7, type: 3}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
   speed: 140
   playOnStart: 0
   hitMin: 35
   hitMax: 65
+<<<<<<< HEAD
   activationThreshold: 70
+=======
+  activationThreshold: 50
+>>>>>>> parent of a683d4b (Home casi done)
   onHitSuccess:
     m_PersistentCalls:
       m_Calls: []
@@ -2686,12 +2702,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
 --- !u!82 &709247185
 AudioSource:
+=======
+--- !u!1 &731058767
+GameObject:
+>>>>>>> parent of a683d4b (Home casi done)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 709247181}
   m_Enabled: 1
   serializedVersion: 4
@@ -2715,6 +2737,45 @@ AudioSource:
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
+=======
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731058768}
+  - component: {fileID: 731058771}
+  - component: {fileID: 731058770}
+  - component: {fileID: 731058769}
+  m_Layer: 0
+  m_Name: Cube (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731058768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731058767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -17.45, y: 2.1439, z: -3.8893}
+  m_LocalScale: {x: 16.403652, y: 15.135614, z: 7.4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 365617187}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &731058769
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731058767}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+>>>>>>> parent of a683d4b (Home casi done)
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -3424,7 +3485,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 390541689}
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 842509932}
   cleanedSprite: {fileID: 21300000, guid: b82115068b41c7a49b0dafbb1e54d873, type: 3}
   isClean: 0
@@ -4095,6 +4159,120 @@ Transform:
   m_Children: []
   m_Father: {fileID: 280264530}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!1 &1148298833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148298834}
+  - component: {fileID: 1148298837}
+  - component: {fileID: 1148298836}
+  - component: {fileID: 1148298835}
+  m_Layer: 0
+  m_Name: Cube (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1148298834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148298833}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 22.7, y: 2.1439, z: -3.8893}
+  m_LocalScale: {x: 16.403652, y: 15.135614, z: 7.4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 365617187}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1148298835
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148298833}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1148298836
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148298833}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1148298837
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148298833}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> parent of a683d4b (Home casi done)
 --- !u!1 &1178722143
 GameObject:
   m_ObjectHideFlags: 0
@@ -4407,7 +4585,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 866303217}
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 1256978647}
   cleanedSprite: {fileID: 21300000, guid: 87de1843e64ffce47bc222c69d98893c, type: 3}
   isClean: 0
@@ -4835,7 +5016,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 687423578}
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 2105876675}
   cleanedSprite: {fileID: 21300000, guid: 5bb9cd6723c6ee04785e69889ecd1c77, type: 3}
   isClean: 0

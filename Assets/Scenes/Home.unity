@@ -401,7 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a152203907f4cc4478bdf0da10ca551e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::footsteps
-  footstepClips: []
+  footstepClips:
+  - {fileID: 8300000, guid: 5890323c4b580344da9b29d3b95f06b3, type: 3}
   audioSource: {fileID: 49532914}
   minMoveThreshold: 0.1
   stepInterval: 0.5
@@ -981,6 +982,9 @@ MonoBehaviour:
   onAnxietyFull:
     m_PersistentCalls:
       m_Calls: []
+  anxietyClip: {fileID: 8300000, guid: 96fb285caee55e34eb05c9aa28e1f8d1, type: 3}
+  anxietyAudioSource: {fileID: 0}
+  anxietySoundThreshold: 41
 --- !u!114 &172274050
 MonoBehaviour:
   m_ObjectHideFlags: 0

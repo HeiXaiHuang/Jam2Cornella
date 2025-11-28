@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Skip: MonoBehaviour
 {
-    public GameObject objetoActivar;   // El objeto que se activar¨¢
-    public GameObject objetoDesactivar; // El objeto que se desactivar¨¢
+    public GameObject objetoActivar; 
+    public GameObject finalActivar;
+    public GameObject objetoDesactivar;
+    public GameObject objetoDesactivar2;
 
     void Update()
     {
@@ -13,5 +16,23 @@ public class Skip: MonoBehaviour
             objetoActivar.SetActive(true);    // Activa el primero
             objetoDesactivar.SetActive(false); // Desactiva el segundo
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            objetoActivar.SetActive(true);
+            objetoDesactivar.SetActive(false);
+            objetoDesactivar2.SetActive(false);
+
+            // Inicia la corutina para esperar 3 segundos
+            StartCoroutine(ActivarFinal());
+        }
+    }
+
+    private System.Collections.IEnumerator ActivarFinal()
+    {
+        yield return new WaitForSeconds(7f); // espera 3 segundos
+        finalActivar.SetActive(true);
     }
 }

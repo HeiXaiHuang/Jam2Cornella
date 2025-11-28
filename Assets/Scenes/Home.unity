@@ -982,15 +982,9 @@ MonoBehaviour:
   onAnxietyFull:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
   anxietyClip: {fileID: 8300000, guid: 96fb285caee55e34eb05c9aa28e1f8d1, type: 3}
   anxietyAudioSource: {fileID: 0}
   anxietySoundThreshold: 41
-=======
-  anxietyClip: {fileID: 0}
-  anxietyAudioSource: {fileID: 0}
-  anxietySoundThreshold: 70
->>>>>>> 5c90682a1a4097935d7133ce34c4c73c2500d1b2
 --- !u!114 &172274050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,6 +1487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DetectCleaned
   objetosAChequear:
   - {fileID: 244310207}
+  - {fileID: 609578895}
   - {fileID: 2105876676}
   messageManager: {fileID: 1171774895}
 --- !u!4 &305148092

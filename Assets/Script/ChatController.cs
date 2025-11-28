@@ -5,42 +5,39 @@ using System;
 
 public class ChatController : MonoBehaviour
 {
-    public TMP_Text textoMensaje;      // Texto donde se muestra el mensaje
-    public Button[] botonesOpciones;   // Los 3 botones de respuesta
+    public TMP_Text textoMensaje;
+
+    public Button[] botones;
+    public TMP_Text[] textosBotones;
 
     private Action<int> callbackRespuesta;
 
-    // ---------------------------
-    // Mostrar mensaje y botones
-    // ---------------------------
-    public void MostrarMensajeNovia(string mensaje, bool mostrarOpciones, Action<int> callback = null)
+    public void MostrarMensaje(string mensaje, string[] opciones, Action<int> callback)
     {
         textoMensaje.text = mensaje;
         callbackRespuesta = callback;
 
-        // Activar o desactivar botones
-        foreach (var btn in botonesOpciones)
-            btn.gameObject.SetActive(mostrarOpciones);
-
-        if (mostrarOpciones)
+        for (int i = 0; i < botones.Length; i++)
         {
-            // Asignar callback a cada botón
-            for (int i = 0; i < botonesOpciones.Length; i++)
-            {
-                int index = i; // Capturar variable local
-                botonesOpciones[i].onClick.RemoveAllListeners();
-                botonesOpciones[i].onClick.AddListener(() => Responder(index));
-            }
+            botones[i].gameObject.SetActive(true);
+            textosBotones[i].text = opciones[i];
+
+            int index = i;
+            botones[i].onClick.RemoveAllListeners();
+            botones[i].onClick.AddListener(() => PulsarOpcion(index));
         }
     }
 
-    void Responder(int opcion)
+    public void MostrarRespuesta(string texto)
     {
-        // Ocultar botones al responder
-        foreach (var btn in botonesOpciones)
-            btn.gameObject.SetActive(false);
+        textoMensaje.text = texto;
 
-        // Llamar callback
-        callbackRespuesta?.Invoke(opcion);
+        foreach (var b in botones)
+            b.gameObject.SetActive(false);
+    }
+
+    void PulsarOpcion(int index)
+    {
+        callbackRespuesta?.Invoke(index);
     }
 }

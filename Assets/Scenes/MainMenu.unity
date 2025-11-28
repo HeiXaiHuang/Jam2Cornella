@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca77e03e8cfaef43994879ae03da83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
-  sceneName: Home
+  sceneName: Prologo
 --- !u!1 &1989430687
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,9 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public string sceneName; // Nombre de la escena a cargar
+    public string sceneName;
 
-    // M¨¦todo normal: se puede llamar desde un bot¨®n o evento
     public void ChangeScene()
     {
         SceneManager.LoadScene(sceneName);

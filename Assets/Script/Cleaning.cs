@@ -5,6 +5,7 @@ public class CleanAction : MonoBehaviour
 {
     public GameObject objectToShow;
     public GameObject nothingToClean;
+    public GameObject dialog;
     public SpriteRenderer spriteRenderer;
     public Sprite cleanedSprite;
 
@@ -20,6 +21,7 @@ public class CleanAction : MonoBehaviour
     {
         objectToShow.SetActive(false);
         nothingToClean.SetActive(false);
+        dialog.SetActive(false);
     }
 
     void Update()
@@ -35,6 +37,7 @@ public class CleanAction : MonoBehaviour
             if (isClean == false)
             {
                 objectToShow.SetActive(true);
+                dialog.SetActive(true);
                 spriteRenderer.sprite = cleanedSprite;
                 isClean = true;
 
@@ -48,7 +51,7 @@ public class CleanAction : MonoBehaviour
             // Añadir ansiedad configurable al limpiar
 
 
-            StartCoroutine(HideObjectAfterDelay(3f));
+            StartCoroutine(HideObjectAfterDelay(5f));
         }
     }
 
@@ -69,5 +72,6 @@ public class CleanAction : MonoBehaviour
         yield return new WaitForSeconds(delay);
         objectToShow.SetActive(false);
         nothingToClean.SetActive(false);
+        dialog.SetActive(false);
     }
 }

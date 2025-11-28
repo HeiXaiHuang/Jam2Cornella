@@ -10,6 +10,12 @@ public class SliderLoop : MonoBehaviour
 
     public GameObject eButton;
 
+    [Header("Heartbeat Audio")]
+    [Tooltip("Optional AudioSource to play heartbeat sound (loop). If not set and Heartbeat Clip is assigned, an AudioSource will be added at runtime.")]
+    [SerializeField] private AudioSource heartbeatSource;
+    [Tooltip("Optional heartbeat clip used to create an AudioSource if none assigned.")]
+    [SerializeField] private AudioClip heartbeatClip;
+
     [SerializeField] private float speed = 40f; // slider units per second
     [SerializeField] private bool playOnStart = true;
 

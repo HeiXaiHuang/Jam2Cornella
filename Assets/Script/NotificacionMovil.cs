@@ -6,19 +6,16 @@ public class NotificacionMovil : MonoBehaviour
 
     void Start()
     {
-        if (icono != null)
-            icono.SetActive(false);
+        icono.SetActive(false);
     }
 
     public void Mostrar()
     {
-        if (icono != null)
-            icono.SetActive(true);
+        icono.SetActive(true);
     }
 
     public void Ocultar()
     {
-        if (icono != null)
-            icono.SetActive(false);
+        icono.SetActive(false);
     }
 }

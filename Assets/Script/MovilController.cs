@@ -3,25 +3,39 @@ using System.Collections;
 
 public class MovilController : MonoBehaviour
 {
-    [Header("UI Móvil")]
     public RectTransform rect;
     public Vector2 posicionAbierta = Vector2.zero;
     public Vector2 posicionCerrada = new Vector2(500, -400);
     public Vector3 escalaAbierta = Vector3.one;
     public Vector3 escalaCerrada = new Vector3(0.6f, 0.6f, 1f);
     public float duracion = 0.35f;
-
-    [Header("Pantallas")]
     public GameObject home;
     public GameObject chat;
-
-    [Header("Notificación")]
     public NotificacionMovil notificacion;
 
     public bool Abierto { get; private set; } = false;
     private bool animando = false;
 
-    private System.Action callback;
+void Update()
+{
+    if (Input.GetKeyDown(KeyCode.M) && !animando)
+    {
+        var mm = FindObjectOfType<MessageManager>();
+
+        StartCoroutine(AnimarMovil(() =>
+        {
+            if (Abierto && mm.notificacionPendiente)
+            {
+                // Abrir chat
+                mm.MostrarChat();
+
+                // Ocultar la notificación
+                notificacion.Ocultar();
+            }
+        }));
+    }
+}
+
 
     void Start()
     {
@@ -30,31 +44,17 @@ public class MovilController : MonoBehaviour
         MostrarHome();
     }
 
-    void Update()
+    public IEnumerator AnimarMovil(System.Action callback = null)
     {
-        if (Input.GetKeyDown(KeyCode.M) && !animando)
-        {
-            StartCoroutine(AnimarMovil(callback));
-        }
-    }
+        if (animando) yield break;
 
-    public void AbrirMovil(System.Action callbackAlAbrir)
-    {
-        callback = callbackAlAbrir;
-        if (!animando)
-            StartCoroutine(AnimarMovil(callback));
-    }
-
-    IEnumerator AnimarMovil(System.Action callback = null)
-    {
         animando = true;
-
         Vector2 inicioPos = rect.anchoredPosition;
         Vector2 finPos = Abierto ? posicionCerrada : posicionAbierta;
         Vector3 inicioEscala = rect.localScale;
         Vector3 finEscala = Abierto ? escalaCerrada : escalaAbierta;
 
-        float t = 0f;
+        float t = 0;
         while (t < duracion)
         {
             t += Time.unscaledDeltaTime;
@@ -63,7 +63,6 @@ public class MovilController : MonoBehaviour
             rect.localScale = Vector3.Lerp(inicioEscala, finEscala, lerp);
             yield return null;
         }
-
         rect.anchoredPosition = finPos;
         rect.localScale = finEscala;
 
@@ -76,11 +75,12 @@ public class MovilController : MonoBehaviour
         callback?.Invoke();
 
         if (!Abierto)
-        {
-            MostrarHome();
-        }
+{
+    // SI SE CIERRA → volver siempre a Home
+    home.SetActive(true);
+    chat.SetActive(false);
+}
 
-        this.callback = null;
     }
 
     void MostrarHome()
@@ -89,3 +89,4 @@ public class MovilController : MonoBehaviour
         chat.SetActive(false);
     }
 }
+

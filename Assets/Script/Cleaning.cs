@@ -4,6 +4,7 @@ using UnityEngine;
 public class CleanAction : MonoBehaviour
 {
     public GameObject objectToShow;
+    public GameObject nothingToClean;
     public SpriteRenderer spriteRenderer;
     public Sprite cleanedSprite;
 
@@ -18,22 +19,34 @@ public class CleanAction : MonoBehaviour
     void Start()
     {
         objectToShow.SetActive(false);
+        nothingToClean.SetActive(false);
     }
 
     void Update()
     {
-        if (isPlayerInside && !isClean && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInside && Input.GetKeyDown(KeyCode.E))
         {
-            objectToShow.SetActive(true);
-            spriteRenderer.sprite = cleanedSprite;
-            isClean = true;
+            if (isClean == true)
+            {
+                Debug.Log("No hay nada que limpiar.");
+                nothingToClean.SetActive(true);
+                StartCoroutine(HideObjectAfterDelay(3f));
+            }
+            if (isClean == false)
+            {
+                objectToShow.SetActive(true);
+                spriteRenderer.sprite = cleanedSprite;
+                isClean = true;
+
+                if (anxietyManager != null)
+                {
+                    anxietyManager.AddAnxiety(-anxietyAmount);
+                    Debug.Log("Anxiety modificado en: " + anxietyAmount);
+                }
+            }
 
             // Añadir ansiedad configurable al limpiar
-            if (anxietyManager != null)
-            {
-                anxietyManager.AddAnxiety(-anxietyAmount);
-                Debug.Log("Anxiety modificado en: " + anxietyAmount);
-            }
+
 
             StartCoroutine(HideObjectAfterDelay(3f));
         }
@@ -55,5 +68,6 @@ public class CleanAction : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         objectToShow.SetActive(false);
+        nothingToClean.SetActive(false);
     }
 }

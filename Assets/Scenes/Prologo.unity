@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f65c9b25f575bc42bbc25256a0e7c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PressChangeScene
-  sceneName: Home 1
+  sceneName: Home
 --- !u!1 &1896191946
 GameObject:
   m_ObjectHideFlags: 0

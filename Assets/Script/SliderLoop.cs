@@ -7,6 +7,7 @@ public class SliderLoop : MonoBehaviour
     [SerializeField] private Slider slider;
     [Tooltip("Optional parent UI GameObject to show/hide. If set, this will be used instead of toggling the slider GameObject directly.")]
     [SerializeField] private GameObject panel;
+<<<<<<< HEAD
 
     public GameObject eButton;
 
@@ -16,6 +17,8 @@ public class SliderLoop : MonoBehaviour
     [Tooltip("Optional heartbeat clip used to create an AudioSource if none assigned.")]
     [SerializeField] private AudioClip heartbeatClip;
 
+=======
+>>>>>>> parent of a683d4b (Home casi done)
     [SerializeField] private float speed = 40f; // slider units per second
     [SerializeField] private bool playOnStart = true;
 
@@ -93,7 +96,6 @@ public class SliderLoop : MonoBehaviour
             else
             {
                 SetUIVisible(true);
-                eButton.SetActive(false);
             }
         }
         else
@@ -109,7 +111,6 @@ public class SliderLoop : MonoBehaviour
             {
                 if (!slider.gameObject.activeSelf)
                     slider.gameObject.SetActive(true);
-                 
             }
         }
 

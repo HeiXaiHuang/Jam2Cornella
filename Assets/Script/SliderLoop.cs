@@ -9,6 +9,7 @@ public class SliderLoop : MonoBehaviour
     [SerializeField] private GameObject panel;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public GameObject eButton;
 
@@ -18,6 +19,8 @@ public class SliderLoop : MonoBehaviour
     [Tooltip("Optional heartbeat clip used to create an AudioSource if none assigned.")]
     [SerializeField] private AudioClip heartbeatClip;
 
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 =======
 >>>>>>> parent of a683d4b (Home casi done)
 =======

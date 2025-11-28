@@ -839,7 +839,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 2109143529}
 <<<<<<< HEAD
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 =======
 >>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 244310208}
@@ -996,7 +999,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 1134854310}
 <<<<<<< HEAD
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 =======
 >>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 280264527}
@@ -2281,7 +2287,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 915028826}
 <<<<<<< HEAD
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 =======
 >>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 649916865}
@@ -2628,9 +2637,12 @@ MonoBehaviour:
   slider: {fileID: 709247184}
   panel: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   eButton: {fileID: 0}
   heartbeatSource: {fileID: 709247185}
   heartbeatClip: {fileID: 8300000, guid: 52af4ec6da1f3cf4b8be631342b237b7, type: 3}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 =======
 >>>>>>> parent of a683d4b (Home casi done)
   speed: 140
@@ -2638,7 +2650,11 @@ MonoBehaviour:
   hitMin: 35
   hitMax: 65
 <<<<<<< HEAD
+<<<<<<< HEAD
   activationThreshold: 70
+=======
+  activationThreshold: 50
+>>>>>>> parent of a683d4b (Home casi done)
 =======
   activationThreshold: 50
 >>>>>>> parent of a683d4b (Home casi done)
@@ -2703,9 +2719,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!82 &709247185
 AudioSource:
 =======
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 --- !u!1 &731058767
 GameObject:
 >>>>>>> parent of a683d4b (Home casi done)
@@ -3486,7 +3505,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 390541689}
 <<<<<<< HEAD
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 =======
 >>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 842509932}
@@ -4586,7 +4608,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 866303217}
 <<<<<<< HEAD
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 =======
 >>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 1256978647}
@@ -5017,7 +5042,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CleanAction
   objectToShow: {fileID: 687423578}
 <<<<<<< HEAD
+<<<<<<< HEAD
   nothingToClean: {fileID: 0}
+=======
+>>>>>>> parent of a683d4b (Home casi done)
 =======
 >>>>>>> parent of a683d4b (Home casi done)
   spriteRenderer: {fileID: 2105876675}
